@@ -1,12 +1,6 @@
 import React, { FunctionComponent, useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
-
-// todo: Use global types. This is code duplicated
-type TransactionType = {
-  id: number;
-  text: string;
-  amount: number;
-};
+import { GlobalContext } from "../../context/GlobalState/GlobalState";
+import { TransactionType } from './Transaction.types';
 
 type TransactionProps = {
   transaction: TransactionType;

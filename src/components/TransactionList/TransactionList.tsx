@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
-import Transaction from './Transaction';
+import { GlobalContext } from "../../context/GlobalState/GlobalState";
+import Transaction from '../Transaction/Transaction';
 
 export const TransactionList = () => {
   // destructuring for the {transactions: [...]}

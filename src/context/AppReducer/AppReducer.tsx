@@ -1,13 +1,10 @@
-import { useReducer} from 'react';
+import { ActionTypes } from './AppReducer.types';
+import { TransactionType } from '../../components/Transaction/Transaction.types';
+import { AppContextInitialState } from '../GlobalState/GlobalState.types';
 
 
+export default function AppReducer(state: AppContextInitialState, action: ActionTypes) {
 
-type TransactionType = {
-  id: number
-}
-
-// @ts-ignore
-export default function AppReducer (state, action) {
   switch (action.type) {
     case 'DELETE_TRANSACTION': 
       return {

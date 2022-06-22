@@ -1,12 +1,13 @@
 import React from "react";
 import "./App.css";
-import Header from "./components/Header.component";
-import Balance from "./components/Balance.component";
-import IncomeExpenses from "./components/IncomeExpenses";
-import { TransactionList } from "./components/TransactionList";
-import AddTransaction from "./components/AddTransaction";
+import { Header} from "./components/Header/Header.component";
+import { Balance } from "./components/Balance/Balance.component";
+import { IncomeExpenses } from "./components/IncomeExpenses/IncomeExpenses";
+import { TransactionList } from "./components/TransactionList/TransactionList";
+import { AddTransaction } from "./components/AddTransaction/AddTransaction";
 
-import { GlobalProvider } from "./context/GlobalState";
+// Our Context Provider
+import { GlobalProvider } from "./context/GlobalState/GlobalState";
 
 function App() {
   return (

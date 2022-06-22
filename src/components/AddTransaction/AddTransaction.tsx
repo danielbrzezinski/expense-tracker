@@ -1,26 +1,36 @@
-import React, { useState, useContext } from "react";
-import { GlobalContext } from '../context/GlobalState';
+import React, { useState, useContext, FunctionComponent, FormEvent, createRef } from "react";
+import { GlobalContext } from '../../context/GlobalState/GlobalState';
+import { TransactionType } from '../Transaction/Transaction.types';
 
-type Props = {};
-
-export default function AddTransaction({}: Props) {
+const AddTransaction: FunctionComponent = () => {
   const [text, setText] = useState("");
   const [amount, setAmount] = useState("");
 
+  const textInputField = createRef<HTMLInputElement>();
+  
   const { addTransaction } = useContext(GlobalContext);
 
-  // @ts-ignore
-  const onSubmit = (e) => {
+  const onSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    const newTransaction = {
+    // prepare Transaction Object
+    const newTransaction:TransactionType  = {
       id: Math.floor(Math.random() * 10000000000),
-      text,
-      amount: +amount, // Cast into Number because this throws an error
+      text: text,
+      amount: +amount, // Cast into Number otherwise this will be a string and throws an error
     };
 
     if(typeof addTransaction === 'function') {
       addTransaction(newTransaction);
+
+      // reset form
+      setText('');
+      setAmount('');
+
+      // autofocus text field
+      if(textInputField.current) {
+        console.log(textInputField.current.focus());
+      }
     }
   }
 
@@ -34,6 +44,8 @@ export default function AddTransaction({}: Props) {
             type='text'
             id='text'
             value={text}
+            autoFocus
+            ref={textInputField}
             onChange={(e) => setText(e.target.value)}
             placeholder='Enter text...'
           />
@@ -55,3 +67,5 @@ export default function AddTransaction({}: Props) {
     </>
   );
 }
+
+export { AddTransaction };

@@ -1,9 +1,7 @@
 import React, { useContext, FunctionComponent } from "react";
-import { GlobalContext } from "../context/GlobalState";
+import { GlobalContext } from "../../context/GlobalState/GlobalState";
 
-type Props = {};
-
-const Balance: FunctionComponent<Props> = ({}) => {
+const Balance: FunctionComponent = () => {
   const { transactions } = useContext(GlobalContext);
 
   const amounts = transactions.map((transaction) => transaction.amount);
@@ -17,4 +15,4 @@ const Balance: FunctionComponent<Props> = ({}) => {
   );
 }
 
-export default Balance;
+export { Balance };
